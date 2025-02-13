@@ -13,14 +13,7 @@ class SplashViewBody extends StatefulWidget {
 class _SplashViewBodyState extends State<SplashViewBody> {
   @override
   void initState() {
-    Future.delayed(
-      const Duration(seconds: 2),
-      () {
-        Get.to(() => const HomeView(),
-            transition: Transition.fadeIn,
-            duration: const Duration(seconds: 1));
-      },
-    );
+    navigateToHomeView();
     super.initState();
   }
 
@@ -40,4 +33,14 @@ class _SplashViewBodyState extends State<SplashViewBody> {
       ],
     );
   }
+}
+
+void navigateToHomeView() {
+  Future.delayed(
+    const Duration(seconds: 2),
+    () {
+      Get.to(() => const HomeView(),
+          transition: Transition.fadeIn, duration: const Duration(seconds: 1));
+    },
+  );
 }
