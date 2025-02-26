@@ -9,39 +9,62 @@ class HomeViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(
-        horizontal: 30,
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          CustomAppBar(),
-          const FeatureCustomListView(),
-          SizedBox(
-            height: 30,
-          ),
-          Row(
+    return CustomScrollView(
+      slivers: [
+        SliverToBoxAdapter(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Container(
-                width: 3,
-                height: 20,
-                color: Colors.yellowAccent,
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 30),
+                child: CustomAppBar(),
               ),
+              const FeatureCustomListView(),
               SizedBox(
-                width: 10,
+                height: 30,
               ),
-              Text(
-                "Best Sellers",
-                style: Styles.textStyle18,
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 30),
+                child: Row(
+                  children: [
+                    Container(
+                      width: 3,
+                      height: 20,
+                      color: Colors.yellowAccent,
+                    ),
+                    SizedBox(
+                      width: 5,
+                    ),
+                    Text(
+                      "Best Sellers",
+                      style: Styles.textStyle20.copyWith(
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ],
           ),
-          SizedBox(
-            height: 20,
-          ),
-          BestSellerListViewItem(),
-        ],
+        ),
+        BestSellerListView()
+      ],
+    );
+  }
+}
+
+class BestSellerListView extends StatelessWidget {
+  const BestSellerListView({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return SliverList(
+      delegate: SliverChildBuilderDelegate(
+        childCount: 30,
+        (context, index) => Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
+          child: BestSellerListViewItem(),
+        ),
       ),
     );
   }
