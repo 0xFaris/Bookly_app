@@ -15,9 +15,7 @@ class BookRating extends StatelessWidget {
         Icon(
           Icons.star,
           color: Colors.yellow,
-        ),
-        SizedBox(
-          width: 6.3,
+          size: 20,
         ),
         Text("4.8",
             style: Styles.textStyle16.copyWith(
@@ -27,9 +25,14 @@ class BookRating extends StatelessWidget {
         SizedBox(
           width: 5,
         ),
-        Text(
-          "(2390)",
-          style: Styles.textStyle14,
+        Opacity(
+          opacity: .5,
+          child: Text(
+            "(2390)",
+            style: Styles.textStyle14.copyWith(
+              fontWeight: FontWeight.w800,
+            ),
+          ),
         )
       ],
     );
