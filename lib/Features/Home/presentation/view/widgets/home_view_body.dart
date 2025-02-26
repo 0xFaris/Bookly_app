@@ -1,5 +1,5 @@
 import 'package:bookly_app/Core/utils/styles.dart';
-import 'package:bookly_app/Features/Home/presentation/view/widgets/best_seller_list_view_items.dart';
+import 'package:bookly_app/Features/Home/presentation/view/widgets/best_seller_list_view.dart';
 import 'package:bookly_app/Features/Home/presentation/view/widgets/custom_appbar.dart';
 import 'package:bookly_app/Features/Home/presentation/view/widgets/features_custom_listview.dart';
 import 'package:flutter/material.dart';
@@ -49,23 +49,6 @@ class HomeViewBody extends StatelessWidget {
         ),
         BestSellerListView()
       ],
-    );
-  }
-}
-
-class BestSellerListView extends StatelessWidget {
-  const BestSellerListView({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return SliverList(
-      delegate: SliverChildBuilderDelegate(
-        childCount: 30,
-        (context, index) => Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
-          child: BestSellerListViewItem(),
-        ),
-      ),
     );
   }
 }
