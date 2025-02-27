@@ -21,7 +21,7 @@ class HomeViewBody extends StatelessWidget {
               ),
               const FeatureCustomListView(),
               SizedBox(
-                height: 30,
+                height: 51,
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 30),
@@ -43,6 +43,9 @@ class HomeViewBody extends StatelessWidget {
                     ),
                   ],
                 ),
+              ),
+              SizedBox(
+                height: 21,
               ),
             ],
           ),
