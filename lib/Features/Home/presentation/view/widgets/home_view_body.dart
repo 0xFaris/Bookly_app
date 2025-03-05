@@ -36,7 +36,7 @@ class HomeViewBody extends StatelessWidget {
                       width: 5,
                     ),
                     Text(
-                      "Best Sellers",
+                      "Newest Books",
                       style: Styles.textStyle20.copyWith(
                         fontWeight: FontWeight.bold,
                       ),
