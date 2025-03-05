@@ -1,15 +1,13 @@
-import 'package:equatable/equatable.dart';
-
 import 'item.dart';
 
-class BookModel extends Equatable {
-  final String? kind;
-  final int? totalItems;
-  final List<Item>? items;
+class Books {
+  String? kind;
+  int? totalItems;
+  List<Item>? items;
 
-  const BookModel({this.kind, this.totalItems, this.items});
+  Books({this.kind, this.totalItems, this.items});
 
-  factory BookModel.fromJson(Map<String, dynamic> json) => BookModel(
+  factory Books.fromJson(Map<String, dynamic> json) => Books(
         kind: json['kind'] as String?,
         totalItems: json['totalItems'] as int?,
         items: (json['items'] as List<dynamic>?)
@@ -22,7 +20,4 @@ class BookModel extends Equatable {
         'totalItems': totalItems,
         'items': items?.map((e) => e.toJson()).toList(),
       };
-
-  @override
-  List<Object?> get props => [kind, totalItems, items];
 }
