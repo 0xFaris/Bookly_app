@@ -21,7 +21,7 @@ class BestSellerListViewItem extends StatelessWidget {
           SizedBox(
             height: 130,
             child: CustomBookImage(
-                imageUrl: books.volumeInfo.imageLinks.thumbnail),
+                imageUrl: books.volumeInfo.imageLinks?.thumbnail ?? ''),
           ),
           SizedBox(
             width: 20,
