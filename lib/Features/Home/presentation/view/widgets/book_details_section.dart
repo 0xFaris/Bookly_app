@@ -1,12 +1,16 @@
+import 'dart:developer';
+
+import 'package:bookly_app/Core/helper/custom_url_luncher.dart';
 import 'package:bookly_app/Core/utils/styles.dart';
+import 'package:bookly_app/Features/Home/Data/models/books_model/books_model.dart';
 import 'package:bookly_app/Features/Home/presentation/view/widgets/book_action.dart';
 import 'package:bookly_app/Features/Home/presentation/view/widgets/book_rating.dart';
 import 'package:bookly_app/Features/Home/presentation/view/widgets/custom_book_image.dart';
 import 'package:flutter/material.dart';
 
 class BookDetailsSection extends StatelessWidget {
-  const BookDetailsSection({super.key});
-
+  const BookDetailsSection({super.key, required this.bookModel});
+  final BookModel bookModel;
   @override
   Widget build(BuildContext context) {
     var width = MediaQuery.of(context).size.width;
@@ -16,16 +20,16 @@ class BookDetailsSection extends StatelessWidget {
         Padding(
           padding: EdgeInsets.symmetric(horizontal: width * 0.2),
           child: CustomBookImage(
-            imageUrl:
-                'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhy-20aYpXG_nP_kh0D-jM5Gc4lhfU0BAWyw&s',
+            imageUrl: bookModel.volumeInfo.imageLinks!.thumbnail.toString(),
           ),
         ),
         SizedBox(
           height: 45,
         ),
         Text(
-          'The Jungle Book',
+          bookModel.volumeInfo.title.toString(),
           style: Styles.textStyle30,
+          textAlign: TextAlign.center,
         ),
         SizedBox(
           height: 6,
@@ -33,7 +37,7 @@ class BookDetailsSection extends StatelessWidget {
         Opacity(
           opacity: .7,
           child: Text(
-            'Rudyard Kipling',
+            bookModel.volumeInfo.authors![0].toString(),
             style: Styles.textStyle18,
           ),
         ),
@@ -42,13 +46,19 @@ class BookDetailsSection extends StatelessWidget {
         ),
         BookRating(
           mainAxisAlignment: MainAxisAlignment.center,
-          rating: '',
-          ratingCount: '',
+          rating: '0',
+          ratingCount: '0',
         ),
         SizedBox(
-          height: 57,
+          height: 37,
         ),
-        BookAction(),
+        BookAction(
+          onTap: () async {
+            await customlaunchUrl(
+                context: context,
+                url: bookModel.volumeInfo.previewLink.toString());
+          },
+        ),
       ],
     );
   }
